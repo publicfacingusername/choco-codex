@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if ƒ?oIcƒ?? doesnƒ?Tt appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>codex</id>
+    <version>0.79.0</version>
+    <packageSourceUrl>https://github.com/publicfacingusername/choco-codex</packageSourceUrl>
+    <owners>publicfacingusername</owners>
+    <title>Codex CLI</title>
+    <authors>OpenAI</authors>
+    <projectUrl>https://github.com/openai/codex</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/publicfacingusername/choco-codex/main/codex_logo.svg</iconUrl>
+    <licenseUrl>https://github.com/openai/codex/blob/main/LICENSE</licenseUrl>
+    <projectSourceUrl>https://github.com/openai/codex</projectSourceUrl>
+    <docsUrl>https://github.com/openai/codex#readme</docsUrl>
+    <tags>openai codex cli ai</tags>
+    <summary>Codex CLI is a coding agent from OpenAI that runs locally on your computer.</summary>
+    <description>
+# Codex CLI
+
+Codex CLI is a coding agent from OpenAI that runs locally on your computer.
+
+## Install
+
+Install the Codex CLI with Chocolatey:
+
+```powershell
+choco install codex
+```
+
+## Run
+
+Run Codex in a terminal. It can inspect your repository, edit files, and run commands:
+
+```powershell
+codex
+```
+
+The first time you run Codex, you'll be prompted to sign in. Authenticate with your ChatGPT account or an API key.
+
+## Windows note
+
+The Codex CLI is available on macOS and Linux. Windows support is experimental. For the best Windows experience, use Codex in a WSL workspace and follow the Windows setup guide in the official docs.
+</description>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
+
