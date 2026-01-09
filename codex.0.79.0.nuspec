@@ -9,7 +9,7 @@
     <title>Codex CLI</title>
     <authors>OpenAI</authors>
     <projectUrl>https://github.com/openai/codex</projectUrl>
-    <iconUrl>https://cdn.jsdelivr.net/gh/publicfacingusername/choco-codex@3cb4cc7e009390bc58c34a959dc9fd2a96ca64e5/codex_logo.svg</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/publicfacingusername/choco-codex@c52a4f51585611740755c359a936fb9bf238fa42/codex_logo.svg</iconUrl>
     <licenseUrl>https://github.com/openai/codex/blob/main/LICENSE</licenseUrl>
     <projectSourceUrl>https://github.com/openai/codex</projectSourceUrl>
     <docsUrl>https://github.com/openai/codex#readme</docsUrl>
