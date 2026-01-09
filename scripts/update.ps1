@@ -32,6 +32,23 @@ if (-not $nuspec) {
 }
 
 $nuspecContent = Get-Content -Path $nuspec.FullName -Raw
+$currentVersionMatch = [regex]::Match($nuspecContent, '<version>([^<]+)</version>')
+$currentVersion = if ($currentVersionMatch.Success) { $currentVersionMatch.Groups[1].Value } else { '' }
+
+$expectedNuspecName = "codex.$version.nuspec"
+if ($currentVersion -eq $version -and $nuspec.Name -eq $expectedNuspecName) {
+  $installPath = Join-Path $repoRoot 'tools\chocolateyinstall.ps1'
+  $installContent = Get-Content -Path $installPath -Raw
+  $hasUrlX64 = $installContent -match [regex]::Escape($urlX64)
+  $hasUrlArm64 = $installContent -match [regex]::Escape($urlArm64)
+  $hasChecksumX64 = $installContent -match [regex]::Escape($checksumX64)
+  $hasChecksumArm64 = $installContent -match [regex]::Escape($checksumArm64)
+  if ($hasUrlX64 -and $hasUrlArm64 -and $hasChecksumX64 -and $hasChecksumArm64) {
+    Write-Host "Codex CLI is already at $version. No update needed."
+    return
+  }
+}
+
 $updatedNuspec = [regex]::Replace(
   $nuspecContent,
   '<version>[^<]+</version>',
@@ -41,9 +58,8 @@ if ($updatedNuspec -ne $nuspecContent) {
   Set-Content -Path $nuspec.FullName -Value $updatedNuspec -Encoding utf8
 }
 
-$newNuspecName = "codex.$version.nuspec"
-if ($nuspec.Name -ne $newNuspecName) {
-  Rename-Item -Path $nuspec.FullName -NewName $newNuspecName
+if ($nuspec.Name -ne $expectedNuspecName) {
+  Rename-Item -Path $nuspec.FullName -NewName $expectedNuspecName
 }
 
 $installPath = Join-Path $repoRoot 'tools\chocolateyinstall.ps1'
