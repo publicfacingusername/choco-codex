@@ -3,10 +3,10 @@ $ErrorActionPreference = 'Stop'
 $toolsDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $exePath = Join-Path $toolsDir 'codex.exe'
 
-$urlX64 = 'https://github.com/openai/codex/releases/download/rust-v0.131.0/codex-x86_64-pc-windows-msvc.exe'
-$checksumX64 = '353A6774D0AE335A8115221C1759650F0BD41C83C43C0639C3B40645ABDFFFBF'
-$urlArm64 = 'https://github.com/openai/codex/releases/download/rust-v0.131.0/codex-aarch64-pc-windows-msvc.exe'
-$checksumArm64 = '715055B016B9A6FB6096E5263E9EF09DBBF18876EB7F43839C69397E095AF52D'
+$urlX64 = 'https://github.com/openai/codex/releases/download/rust-v0.132.0/codex-x86_64-pc-windows-msvc.exe'
+$checksumX64 = '6FDD1F4E37B8B0949751819D727D4BC6E156E42F8F86CA6AD3E7413D1AE514F7'
+$urlArm64 = 'https://github.com/openai/codex/releases/download/rust-v0.132.0/codex-aarch64-pc-windows-msvc.exe'
+$checksumArm64 = 'E3915A1D3AF923C26BF1DDE53FA19B818DB12EBD048BEFB14BA513FB644E2DCB'
 
 $arch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString()
 switch ($arch) {
@@ -27,6 +27,7 @@ Get-ChocolateyWebFile -PackageName $env:ChocolateyPackageName `
   -ChecksumType 'sha256'
 
 Install-BinFile -Name 'codex' -Path $exePath
+
 
 
 
